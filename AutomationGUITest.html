@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+
+<style>
+* {
+  	box-sizing: border-box;
+}
+
+body {
+  	margin: 0;
+}
+
+/* Style the header */
+.header {
+  	background-color: MediumSeaGreen;
+  	color: white;
+  	padding: 20px;
+  	text-align: center;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+ 	float: left;
+  	width: 33.33%;
+  	padding: 15px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  	content: "";
+  	display: table;
+  	clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width:600px) {
+  .column {
+    width: 100%;
+  }
+}
+</style>
+</head>
+
+<body >
+
+<div class="header">
+	<h1>Automation GUI</h1>
+</div>
+
+<div class="row">
+	<div class="column">
+		<form>
+			First Name:<br>
+			<input type="text" name="firstname">
+			<br>
+			Last Name:<br>
+			<input type="text" name="lastname">
+			<br>
+			Email:<br>
+			<input type="text" email="email">
+			<br>
+			Phone:<br>
+			<input type="text" phone="phone">
+			<br>
+		</form>
+	</div>
+
+	<div class="column">
+		<form>
+			Street Number:<br>
+			<input type="text" streetnumber="streetnumber">
+			<br>
+			Street Name:<br>
+			<input type="text" streetname="streetname">
+			<br>
+			Suburb:<br>
+			<input type="text" suburb="suburb">
+			<br>
+			Postcode:<br>
+			<input type="text" postcode="postcode">
+			<br>
+		</form>
+	</div>
+
+	<div class="column">
+		<form>
+			No. Beds:<br>
+			<input type="text" beds="beds">
+			<br>
+			No. Baths:<br>
+			<input type="text" baths="baths">
+			<br>
+			No. Carparks:<br>
+			<input type="text" cars="cars">
+			<br>
+			No. Livingrooms:<br>
+			<input type="text" livingrooms="livingrooms">
+			<br>
+			Lot Size:<br>
+			<input type="text" lotsize="lotsize">
+			<br>
+			Last Sale Date:<br>
+			<input type="text" saledate="saledate">
+			<br>
+			Last Sale Price:<br>
+			<input type="text" saleprice="saleprice">
+			<br>
+			Year Built:<br>
+			<input type="text" yearbuilt="yearbuilt">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<input type="button" value="Submit">
+			<br>
+		</form>
+	</div>
+
+</div>
+
+</body>
+</html>
