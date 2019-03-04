@@ -45,83 +45,314 @@ body {
 
 <body >
 
+
+
 <div class="header">
 	<h1>Automation GUI</h1>
 </div>
 
 <div class="row">
-	<div class="column">
-		<form>
+	<div class="column"> <!--column 1-->
+		<form action = "" onsubmit = "return Column1ErrorChecking" id = "column1">
 			First Name:<br>
-			<input type="text" name="firstname">
+			<input type="text" name="firstname" id = "fName">
 			<br>
+			
 			Last Name:<br>
-			<input type="text" name="lastname">
+			<input type="text" name="lastname" id = "lName">
 			<br>
+			
 			Email:<br>
-			<input type="text" email="email">
+			<input type="text" email="email" id = "email">
 			<br>
+			
 			Phone:<br>
-			<input type="text" phone="phone">
+			<input type="text" phone="phone" id = "pNumber">
+			<br>
 			<br>
 		</form>
+		<script>
+			function Column1ErrorChecking() {
+			
+				var fName = document.getElementById("fName").value;
+		
+				var lName = document.getElementById("lName").value;
+
+				var email = document.getElementById("email").value;
+
+				var phone = document.getElementById("pNumber").value;
+
+				var regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;	
+
+				<!--must be a non-zero length string-->
+				if(!isNaN(fName) || fName.length < 1) {
+		
+					alert("must be a reasonable name");
+
+					submitOk = "false";	
+	
+				}
+
+				<!--must be a non-zero length string-->
+				if(!isNaN(lName) || lName.length < 1) {
+		
+					alert("must be a reasonable name");
+
+					submitOk = "false";	
+	
+				}
+
+				<!--must follow the email format-->
+				if(email.length < 1 || regEmail.test(email)) {
+		
+					alert("must be a valid email address");
+
+					submitOk = "false";
+	
+				}
+
+				<!--must be a number of 15 digits length-->
+				if(isNaN(pNumber) || pNumber < 0 || pNumber.length < 15) {
+		
+					alert("must be a viable australian phone number");
+
+					submitOk = "false";
+	
+				}
+
+			}
+		</script>
 	</div>
 
-	<div class="column">
-		<form>
+	<div class="column"> <!--column 2-->
+		<form id = "column2">
 			Street Number:<br>
-			<input type="text" streetnumber="streetnumber">
+			<input type="text" streetnumber="streetnumber" id = "sNumber"> <!--pattern = [0-9]{1,}--><!--add red error messaging underneath boxes and pattern only works in firefox so use harry's method for error catching which is in the testhtml file he sent-->
 			<br>
 			Street Name:<br>
-			<input type="text" streetname="streetname">
+			<input type="text" streetname="streetname" id = "sName"> <!--pattern = \s[A-z]{1,}-->
 			<br>
 			Suburb:<br>
-			<input type="text" suburb="suburb">
+			<input type="text" suburb="suburb" id = "suburb"> <!--pattern = [A-Za-z' ']{1,}--><!--still doesn't like the regex-->
 			<br>
 			Postcode:<br>
-			<input type="text" postcode="postcode">
+			<input type="text" postcode="postcode" id = "pCode"> <!--pattern = [0-9]{4}-->
+			<br>
 			<br>
 		</form>
+		<script> 
+			function Column2ErrorChecking() {
+			
+				var streetNumber = document.getElementById("sNumber").value;
+
+				var streetName = document.getElementById("sName").value;
+
+				var suburb = document.getElementById("suburb").value;
+
+				var postcode = document.getElementById("pCode").value;
+
+				submitOk = "true";
+
+				<!--street number must be a number between 1-3 digits-->
+				if(isNaN(streetNumber) || streetNumber < 1 || streetNumber > 999 || streetNumber.length < 1 || streetNumber > 3) {
+		
+					alert("must be a number between 1 and 3 digits");
+
+					submitOk = "false";
+	
+				}
+
+				<!--Street name must be a non-zero length string--> //also need to add regex to determine if a street type is added at the end
+				if(streetName.length < 1 || !isNaN(streetName)) {
+		
+					alert("must be a valid street name");
+
+					submitOk = "false";
+	
+				}
+
+				<!--Suburb must be a non-zero length string-->
+				if(suburb.length < 1 || !isNaN(suburb)) {
+		
+					alert("Must be a valid suburb name");
+
+					submitOk = "false"
+	
+				}
+
+
+				<!--Error checking for postcode must be 4 digits in length-->
+				if(isNaN(postcode) || postcode < 4000 || postcode > 4999 || postcode.length < 4) {
+		
+					alert("alert");
+
+					submitOk = "false";
+	
+				}
+			}
+		</script>
 	</div>
 
-	<div class="column">
-		<form>
+	<div class="column"> <!--column 3-->
+		<form id = "column3">
 			No. Beds:<br>
-			<input type="text" beds="beds">
+			<input type="text" name = "beds" id = "bedsNo"> 
 			<br>
 			No. Baths:<br>
-			<input type="text" baths="baths">
+			<input type="text" name="baths" id = "bathsNo"> 
 			<br>
 			No. Carparks:<br>
-			<input type="text" cars="cars">
+			<input type="text" name="cars" id = "carsNo"> 
 			<br>
 			No. Livingrooms:<br>
-			<input type="text" livingrooms="livingrooms">
+			<input type="text" livingrooms="livingrooms" id = "lRoomsNo"> 
 			<br>
 			Lot Size:<br>
-			<input type="text" lotsize="lotsize">
+			<input type="text" lotsize="lotsize" id = "lSize"> 
 			<br>
 			Last Sale Date:<br>
-			<input type="text" saledate="saledate">
+			<input type="text" saledate="saledate" id = "sDate1" size = "2"> 
+			/
+			<input type="text" saledate="saledate" id = "sDate2" size = "2"> 
+			/
+			<input type="text" saledate="saledate" id = "sDate3" size = "4"> 
 			<br>
 			Last Sale Price:<br>
-			<input type="text" saleprice="saleprice">
+			<input type="text" saleprice="saleprice" id = "sPrice"> 
 			<br>
 			Year Built:<br>
-			<input type="text" yearbuilt="yearbuilt">
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<input type="button" value="Submit">
-			<br>
+			<input type="text" yearbuilt="yearbuilt" id = "yBuilt"> 
 		</form>
-	</div>
+		<script>
+			function Column3ErrorChecking() {
+			
+				var noOfBeds = document.getElementById("bedsNo").value;
+	
+				var noOfBaths = document.getElementById("bathsNo").value;
+	
+				var noOfCars = document.getElementById("carsNo").value;
+	
+				var noOfLRooms = document.getElementById("lRoomsNo").value;
+	
+				var lotSize = document.getElementById("lSize").value;
+	
+				var lSDate1 = document.getElementById("sDate1").value;
 
+				var lSDate2 = document.getElementById("sDate2").value;
+
+				var lSDate3 = document.getElementById("sDate3").value;
+	
+				var lSPrice = document.getElementById("sPrice").value;
+	
+				var yBuilt = document.getElementById("yBuilt").value;
+
+				submitOK = "true";
+
+				<!--Error checking for number of beds; must be 1 digit in length and any digit 0-9-->
+				if(isNaN(noOfBeds) || noOfBeds < 1 || noOfBeds > 9 || noOfBeds.length < 1) {
+
+					alert("The number of beds must be a number between 1 and 9");
+	
+					submitOk = "false";
+
+				}
+		
+				<!--Error checking for number of baths; must be 1 digit in length and any digit 0-9-->
+				if(isNaN(noOfBaths) || noOfBaths < 1 || noOfBaths > 9 || noOfBaths.length < 1) {
+
+					alert("The number of baths must be a number between 1 and 9");
+	
+					submitOk = "false";
+
+				}
+
+				<!--Error checking for number of cars; must be 1 digit in length and any digit 0-9-->
+				if(isNaN(noOfCars) || noOfCars < 0 || noOfCars > 9 || noOfCars.length < 1) {
+
+					alert("The number of carparks must be a number between 1 and 9");
+	
+					submitOk = "false";
+
+				}
+
+				<!--Error checking for number of living rooms; must be 1 digit in length and any digit 0-9-->
+				if(isNaN(noOfLRooms) || noOfLRooms < 1 || noOfLRooms > 9 || noOfLRooms.length < 1) {
+
+					alert("The number of living rooms must be a number between 1 and 9");
+	
+					submitOk = "false";
+
+				}
+		
+				<!--Error checking for lot size; must be at least 1 digit in length and must be less then 10000000-->
+				if(isNaN(lotSize) || lotSize < 1 || lotSize > 10000000 || lotSize.length < 1) {
+
+					alert("The lot size must be less than 10,000,000 m^2");
+			
+					submitOk = "false";
+
+				}
+
+				<!--Error checking for lastsaledate1 must be a number 2 digits long for 1 digits days precede the days number with a zero-->
+				if(lSDate1.length != 2 || isNaN(lSDate1)) {
+		
+					alert("must be 2 digits in length, e.g. 12 or 02");
+			
+					submitOk = "false";
+	
+				}
+
+				<!--Error checking for lastsaledate2 must be a number 2 digits long for 1 digits month precede the month number with a zero-->
+				if(lSDate2.length != 2 || isNaN(lSDate2)) {
+		
+					alert("must be 2 digits in length, e.g. 12 or 02");
+			
+					submitOk = "false";
+	
+				}
+
+				<!--Error checking for lastsaledate3 must be a number 4 digits long-->
+				if(lSDate3.length != 4 || isNaN(lSDate3)) {
+		
+					alert("must be 4 digits in length, e.g. 1998");
+			
+					submitOk = "false";
+	
+				}
+
+				<!--Error checking for last sale price must be at least 1 digit in length and must be less then 10000000-->
+				if(isNaN(lotSize) || lotSize < 1 || lotSize > 10000000 || lotSize.length < 1) {
+
+					alert("The lot size must be less than $10,000,000");
+			
+					submitOk = "false";
+
+				}
+
+				<!--Error checking for year built must be a number of 4 digits length-->
+				if(isNaN(yBuilt) || yBuilt < 1 || yBuilt > 2099 || yBuilt.length < 4) {
+		
+					alert("must be a year in the past");
+
+					submitOk = "false";
+	
+				}
+			}
+		</script>
+	</div>
+	<!--this form is for submitting all other forms. only way I found to do it-->
+	<form action = "" onsubmit = "return SubmitAll()">
+		<input type = "submit" value = "Submit Propper" id = "submit4">
+	</form>
+	<script>
+		function SubmitAll() {
+		
+			Column1ErrorChecking();
+			Column2ErrorChecking();
+			Column3ErrorChecking();
+
+		}
+	</script>
 </div>
 
 </body>
